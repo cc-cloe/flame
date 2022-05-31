@@ -1,0 +1,48 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# Hyperparameters for COCO training from scratch
+# python train.py --batch 40 --cfg yolov5m.yaml --weights '' --data coco.yaml --img 640 --epochs 300
+# See tutorials for hyperparameter evolution https://github.com/ultralytics/yolov5#tutorials
+# 默认用的是这里的超参数
+
+# 训练相关参数
+lr0: 0.01  # initial learning rate (SGD=1E-2, Adam=1E-3) 初始学习率
+lrf: 0.1  # final OneCycleLR learning rate (lr0 * lrf) 最终学习率
+momentum: 0.937  # SGD momentum/Adam beta1
+weight_decay: 0.0005  # optimizer weight decay 5e-4
+warmup_epochs: 3.0  # warmup epochs (fractions ok)，热身的轮次
+warmup_momentum: 0.8  # warmup initial momentum
+warmup_bias_lr: 0.1  # warmup initial bias lr
+
+# 损失函数相关参数
+box: 0.05  # box loss gain   box iou损失系数
+cls: 0.5  # cls loss gain   cls分类损失函数
+cls_pw: 1.0  # cls BCELoss positive_weight  cls BCELoss正样本权重
+obj: 1.0  # obj loss gain (scale with pixels)
+obj_pw: 1.0  # obj BCELoss positive_weight
+
+# 其他参数
+iou_t: 0.20  # IoU training threshold
+anchor_t: 4.0  # anchor-multiple threshold
+# anchors: 3  # anchors per output layer (0 to ignore)
+fl_gamma: 0.0  # focal loss gamma (efficientDet default gamma=1.5)
+
+# 数据增强
+hsv_h: 0.015  # image HSV-Hue augmentation (fraction)
+hsv_s: 0.7  # image HSV-Saturation augmentation (fraction)
+hsv_v: 0.4  # image HSV-Value augmentation (fraction)
+# 用于random-perspective
+degrees: 0.0  # image rotation (+/- deg)
+translate: 0.1  # image translation (+/- fraction)
+scale: 0.5  # image scale (+/- gain)
+shear: 0.0  # image shear (+/- deg)
+perspective: 0.0  # image perspective (+/- fraction), range 0-0.001
+# 反转
+flipud: 0.0  # image flip up-down (probability)上下反转
+fliplr: 0.5  # image flip left-right (probability)左右反转
+
+mosaic: 1.0  # image mosaic (probability)
+
+mixup: 0.0  # image mixup (probability)
+# 复制粘贴的方法，复制粘贴目标对象这个实例到其他地方
+copy_paste: 0.0  # segment copy-paste (probability)
+#cutout: 0.0
